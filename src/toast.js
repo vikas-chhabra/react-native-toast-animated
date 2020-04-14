@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, Animated, Platform } from 'react-native';
 import { color } from './colors';
-import styles from './toastStyles';
+import styles from './styles';
 
 export default class Toast extends Component {
     constructor(props) {
