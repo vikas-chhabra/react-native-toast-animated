@@ -1,5 +1,5 @@
 # react-native-toast-animated
-### example basic Usage
+### example basic Usage with hooks
 
 
     
@@ -27,6 +27,7 @@
 			<Toast
 				ref={toastRef}
 				height={100} //optional
+				bottom={false} //optional bool default false
 			/>
 			...
 		</View>
@@ -47,6 +48,39 @@ showToast parameters
 | tesnsion        | number | false    | Tension for the animation of toast.                 | 0.8     |
 | textColor       | string | false    | Color code of the text color.                       | #fff    |
 
+
+### example basic Usage with class component
+
+	import Toast from 'react-native-toast-animated';
+
+	export default class basicUsage extends Component{
+		render{
+			return(){
+
+				<View>
+				...
+					<TouchableOpacity onPress={()=>{
+						this.refs.toastRef.showToast(
+							{
+								time: 5000,
+								msg: 'This is a success Toast!!',
+							},
+							()=>{ console.log("toast ended") }
+						)
+					}}>
+						<Text>ShowToast</Text>
+					</TouchableOpacity>
+
+					<Toast
+						ref="toastRef"
+						height={100} //optional
+						bottom={false} //optional bool default false
+					/>
+					...
+				</View>
+				}
+		}
+	}
 
 
 ![screenshot](./src/sample.gif)

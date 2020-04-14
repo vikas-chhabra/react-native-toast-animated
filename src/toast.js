@@ -24,11 +24,25 @@ export default class Toast extends Component {
         return (
             <Animated.View
                 style={[styles.toastContainer, {
-                    top: topValue,
-                    backgroundColor: type!==''?(color[type]):(background),
-                    height: height
-                }]}>
-                <Text style={[styles.textContent, {color: text}]}>{msg}</Text>
+                    backgroundColor: type !== '' ? (color[type]) : (background),
+                    height: height,
+                }, 
+                this.props.bottom?(
+                    {
+                        bottom: topValue,
+                        justifyContent: 'flex-start',
+                        paddingTop: 30,
+                        borderRadius: 0,
+                        borderTopRightRadius: 20,
+                        borderTopLeftRadius: 20,
+                    }
+                ):(
+                    {
+                        top: topValue,
+                    }
+                )
+                ]}>
+                <Text style={[styles.textContent, { color: text }]}>{msg}</Text>
             </Animated.View>
         )
     }
@@ -36,22 +50,23 @@ export default class Toast extends Component {
         let { topValue, height } = this.state;
         this.setState({
             msg: params.msg,
-            type: params.type?(params.type):(''),
-            background: params.backgroundColor?(params.backgroundColor):(color.success),
-            text: params.textColor?(params.textColor):('#fff')
+            type: params.type ? (params.type) : (''),
+            background: params.backgroundColor ? (params.backgroundColor) : (color.success),
+            text: params.textColor ? (params.textColor) : ('#fff')
         }, () => {
             Animated.spring(topValue,
                 {
                     toValue: 0,
-                    friction: params.friction?(params.friction):(1.2),
-                    tension: params.tension?(params.tension):(0.8)
+                    friction: params.friction ? (params.friction) : (1.2),
+                    tension: params.tension ? (params.tension) : (0.8)
                 }
             ).start();
 
             setTimeout(_ = () => {
-                if(callback){
+                if (callback) {
                     callback()
                 }
+                //Put All Your Code Here, Which You Want To Execute After Some Delay Time.
                 Animated.spring(topValue,
                     {
                         toValue: -Math.abs(height),
@@ -60,7 +75,7 @@ export default class Toast extends Component {
                     }
                 ).start();
 
-            }, params.time?(params.time):(2000));
+            }, params.time ? (params.time) : (2000));
         })
     }
 }
