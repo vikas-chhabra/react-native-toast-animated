@@ -49,4 +49,4 @@ showToast parameters
 
 
 
-![screenshot](./src/sample.gif | height=300)
+![screenshot](./src/sample.gif =100x400)
