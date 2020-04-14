@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, Animated, Platform } from 'react-native';
 import { color } from './colors';
-import styles from './styles';
+import styles from './toastStyles';
 
 export default class Toast extends Component {
     constructor(props) {
@@ -13,14 +13,14 @@ export default class Toast extends Component {
             type: 'success',
             height: tempHeight,
             background: '',
-            text: ''
+            text: '#fff'
         }
     }
     componentWillUnmount() {
         clearTimeout(this.showToast);
     }
     render() {
-        let { topValue, type, height, msg, text } = this.state;
+        let { topValue, type, height, msg, text, background } = this.state;
         return (
             <Animated.View
                 style={[styles.toastContainer, {
@@ -32,18 +32,7 @@ export default class Toast extends Component {
             </Animated.View>
         )
     }
-    showToast = (params) => {
-
-        // let params = {
-        //     msg: 'message', required, string
-        //     type: 'danger', optional, enum || danger || warn || success || info
-        //     backgroundColor: '#abc', optinal , string 
-        //     textColor: '#abc', optionoal , string,
-        //     friction: 21, optional, number,
-        //     tension: 12, optional , number,
-        //     time: 10202, optional , number
-        // }
-
+    showToast = (params, callback) => {
         let { topValue, height } = this.state;
         this.setState({
             msg: params.msg,
@@ -60,8 +49,9 @@ export default class Toast extends Component {
             ).start();
 
             setTimeout(_ = () => {
-
-                //Put All Your Code Here, Which You Want To Execute After Some Delay Time.
+                if(callback){
+                    callback()
+                }
                 Animated.spring(topValue,
                     {
                         toValue: -Math.abs(height),
