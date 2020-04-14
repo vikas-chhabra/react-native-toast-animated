@@ -1,0 +1,26 @@
+{
+  "name": "react-native-toast-animated",
+  "version": "1.0.0",
+  "description": "A simple and animated Toast Component for both android and ios devices in react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-toast",
+    "react-native-easy-toast",
+    "react-native-animated-toast",
+    "react-native-animated",
+    "react-native-toast-container",
+    "android",
+    "ios",
+    "ui",
+    "toast"
+  ],
+  "author": "NUGEN",
+  "license": "ISC",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.59.0"
+  }
+}
