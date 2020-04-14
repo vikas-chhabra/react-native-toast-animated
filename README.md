@@ -2,39 +2,38 @@
 
 example basic Usage
 `
-import React, {useRef} from 'react';
-import Toast from 'react-native-toast-animated'
+    import React, {useRef} from 'react';
+    import Toast from 'react-native-toast-animated'
 
-export default function basicUsage(){
-    const toastRef = useRef();
-    return(){
-        <View>
-            ...
+    export default function basicUsage(){
+        const toastRef = useRef();
+        return(){
+            <View>
+                ...
 
-            <TouchableOpacity onPress={()=>{
-                toastRef.current.showToast(
-                    {
-                        time: 5000,
-                        msg: 'This is a success Toast!!',
-                    },
-                    ()=>{
-                        console.log("toast ended")
-                    }
-                )
-            }}>
-                <Text>ShowToast</Text>
-            </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    toastRef.current.showToast(
+                        {
+                            time: 5000,
+                            msg: 'This is a success Toast!!',
+                        },
+                        ()=>{
+                            console.log("toast ended")
+                        }
+                    )
+                }}>
+                    <Text>ShowToast</Text>
+                </TouchableOpacity>
 
-            <Toast
-                ref={toastRef}
-                height={100} //optional
-            />
+                <Toast
+                    ref={toastRef}
+                    height={100} //optional
+                />
 
-            ...
-        </View>
+                ...
+            </View>
+        }
     }
-}
-
 `
 
 showToast parameters
