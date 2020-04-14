@@ -46,3 +46,7 @@ showToast parameters
 | friction        | number | false    | Friction of the animation of toast.                 | 1.2     |
 | tesnsion        | number | false    | Tension for the animation of toast.                 | 0.8     |
 | textColor       | string | false    | Color code of the text color.                       | #fff    |
+
+
+
+![screenshot](./src/sample.gif)
