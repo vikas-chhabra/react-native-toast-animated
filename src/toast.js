@@ -11,36 +11,51 @@ export default class Toast extends Component {
             topValue: new Animated.Value(-Math.abs(tempHeight)),
             msg: '',
             type: 'success',
-            height: tempHeight
+            height: tempHeight,
+            background: '',
+            text: ''
         }
     }
     componentWillUnmount() {
         clearTimeout(this.showToast);
     }
     render() {
-        let { topValue, type, height, msg } = this.state;
+        let { topValue, type, height, msg, text } = this.state;
         return (
             <Animated.View
                 style={[styles.toastContainer, {
                     top: topValue,
-                    backgroundColor: color[type],
+                    backgroundColor: type!==''?(color[type]):(background),
                     height: height
                 }]}>
-                <Text style={[styles.textContent]}>{msg}</Text>
+                <Text style={[styles.textContent, {color: text}]}>{msg}</Text>
             </Animated.View>
         )
     }
     showToast = (params) => {
+
+        // let params = {
+        //     msg: 'message', required, string
+        //     type: 'danger', optional, enum || danger || warn || success || info
+        //     backgroundColor: '#abc', optinal , string 
+        //     textColor: '#abc', optionoal , string,
+        //     friction: 21, optional, number,
+        //     tension: 12, optional , number,
+        //     time: 10202, optional , number
+        // }
+
         let { topValue, height } = this.state;
         this.setState({
             msg: params.msg,
-            type: params.type
+            type: params.type?(params.type):(''),
+            background: params.backgroundColor?(params.backgroundColor):(color.success),
+            text: params.textColor?(params.textColor):('#fff')
         }, () => {
             Animated.spring(topValue,
                 {
                     toValue: 0,
-                    friction: 1.2,
-                    tension: 0.8
+                    friction: params.friction?(params.friction):(1.2),
+                    tension: params.tension?(params.tension):(0.8)
                 }
             ).start();
 
@@ -55,7 +70,7 @@ export default class Toast extends Component {
                     }
                 ).start();
 
-            }, params.time);
+            }, params.time?(params.time):(2000));
         })
     }
 }
