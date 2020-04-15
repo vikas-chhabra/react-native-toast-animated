@@ -82,5 +82,6 @@ showToast parameters
 		}
 	}
 
-
-![screenshot](./src/sample.gif)
+<div>
+	<img src="./src/sample.gif" width="300"/>
+</div>
