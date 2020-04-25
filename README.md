@@ -38,15 +38,19 @@
 
 showToast parameters
 
-| Parameter       | Type   | Required | Description                                         | Default |
-|-----------------|--------|----------|-----------------------------------------------------|---------|
-| msg             | string | true     | The message to be displayed in toast.               | -       |
-| time            | number | false    | Close delay, after the time toast should be closed. | 2000    |
-| backgroundColor | string | false    | Color code of the background color.                 | -       |
-| type            | enum   | false    | danger or warn or success or info                   | success |
-| friction        | number | false    | Friction of the animation of toast.                 | 1.2     |
-| tesnsion        | number | false    | Tension for the animation of toast.                 | 0.8     |
-| textColor       | string | false    | Color code of the text color.                       | #fff    |
+| Parameter       	   | Type   | Required | Description                                         		| Default |
+|----------------------|--------|----------|------------------------------------------------------------|---------|
+| msg             	   | string | true     | The message to be displayed in toast.               		| -       |
+| time            	   | number | false    | Close delay, after the time toast should be closed. 		| 2000    |
+| backgroundColor 	   | string | false    | Color code of the background color.                 		| -       |
+| type            	   | enum   | false    | danger or warn or success or info                   		| success |
+| friction        	   | number | false    | Friction of the animation of toast.                 		| 1.2     |
+| tesnsion        	   | number | false    | Tension for the animation of toast.                 		| 0.8     |
+| textColor       	   | string | false    | Color code of the text color.                       		| #fff    |
+| paddingTop      	   | number | false    | Padding From top of the toast.                      		| 30      |
+| borderRadius    	   | number | false    | For giving round to the corners of toast.           		| 0       |
+| borderTopRightRadius | number | false    | For giving round only to the top right corner of toast.    | 20      |
+| borderTopLeftRadius  | number | false    | For giving round only to the top left corner of toast.     | 20      |
 
 
 ### example basic Usage with class component
